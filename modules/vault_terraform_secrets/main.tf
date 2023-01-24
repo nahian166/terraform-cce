@@ -14,3 +14,4 @@ resource "vault_generic_secret" "kubectl" {
         kubectl_config = var.kubectl_config
     })
 }
+

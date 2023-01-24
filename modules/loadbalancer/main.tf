@@ -22,7 +22,7 @@ resource "opentelekomcloud_vpc_eip_v1" "ingress_eip" {
   }
   bandwidth {
     name        = "${var.stage_name}-tf-ingress-nahian"
-    size        = 8
+    size        = 50
     share_type  = "PER"
     charge_mode = "traffic"
   }

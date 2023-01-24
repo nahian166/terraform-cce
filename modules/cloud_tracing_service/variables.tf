@@ -7,3 +7,5 @@ variable "bucket_name" {
 variable "file_prefix" {
   default = "test_cluster"
 }
+variable "region" {
+}

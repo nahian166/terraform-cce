@@ -1,9 +1,11 @@
 module "cloud_tracing_service" {
     source = "../../modules/cloud_tracing_service"
+    region = local.region
 }
 
 module "keypair" {
     source = "../../modules/keypair"
+    region = local.region
     #stage_name = local.stage_name
 }
 
@@ -25,17 +27,20 @@ module "cluster" {
     vpc_cidr = local.vpc_cidr
     subnet_id = module.vpc.subnet_id
     #subnet_id = opentelekomcloud_vpc_subnet_v1.subnet.subnet_id
-    flavor_id = "cce.s1.small"
-    nodes = local.node_spec
-    availability_zone = "eu-de-03"
+    cluster_flavor_id = local.cluster_flavor_id
+    cluster_node_flavor_id = local.node_spec_default
+    #flavor_id = "cce.s1.small"
+    #nodes = local.node_spec
+    availability_zone = local.availability_zone
     cluster_node_count = local.cluster_node_count
+    region = local.region
 }
 
 module "loadbalancer" {
     source = "../../modules/loadbalancer"
     stage_name = local.stage_name
     subnet_id = module.vpc.neutron_subnet_id
-    region = "eu-de"
+    region = local.region
     tenant_id = "42225bcefc3340c68262eed3a9534dc8"
     #network_id = module.vpc.network_id
 }

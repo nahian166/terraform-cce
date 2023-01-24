@@ -17,7 +17,12 @@ resource "opentelekomcloud_compute_keypair_v2" "nahian-keypair" {
   name       = "nahian-keypair"
   #public_key = file(var.ssh_pub_key)
   public_key = tls_private_key.rsa-nahian-keypair.public_key_openssh
-  region = "eu-de"
+  region = var.region
+}
+
+resource "local_file" "ssh_key" {
+  filename = "../../${opentelekomcloud_compute_keypair_v2.nahian-keypair.name}.pem"
+  content = tls_private_key.rsa-nahian-keypair.private_key_pem
 }
 
 output "keypair_name" {

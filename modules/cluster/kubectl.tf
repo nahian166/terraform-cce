@@ -48,7 +48,7 @@ locals {
 resource "opentelekomcloud_s3_bucket" "kubeconfig" {
     bucket = "kubeconfig-${var.stage_name}"
     acl = "private"
-    region = "eu-de"
+    region = var.region
     versioning {
       enabled = true
     }
