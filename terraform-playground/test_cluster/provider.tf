@@ -10,13 +10,13 @@
 } */
 
 provider "opentelekomcloud" {
-  # cloud = "otc"
+  cloud = "otc2"
   access_key = module.environment.variable["ACCESS_KEY"]
   secret_key = module.environment.variable["SECRET_KEY"]
-  auth_url = "https://iam.eu-de.otc.t-systems.com/v3"
-  tenant_name = local.otc_tenant_name
-  domain_name = local.otc_domain_name
+  #auth_url = "https://iam.eu-de.otc.t-systems.com/v3"
+  #tenant_name = local.otc_tenant_name
+  #domain_name = local.otc_domain_name
   #token = var.token
-  user_name = "nahian"
-  password = "Google_Cloud!66"
+  #user_name = "nahian"
+  #password = "Google_Cloud!66"
 }

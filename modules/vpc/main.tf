@@ -10,8 +10,6 @@ terraform {
 resource "opentelekomcloud_vpc_v1" "vpc" {
   name   = var.vpc_name
   cidr   = var.vpc_cidr
-  #shared = data.opentelekomcloud_identity_project_v3.current.region == "eu-de" ? var.enable_shared_snat : false
-  #tags   = var.tags
   shared = true
 }
 

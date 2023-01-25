@@ -1,3 +1,6 @@
+/* variable "region" {
+} */
+
 variable "vpc_name" {
   #default = "nahian-test-vpc"
 }

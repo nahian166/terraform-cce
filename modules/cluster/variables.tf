@@ -1,6 +1,3 @@
-variable "region" {
-}
-
 variable "cluster_flavor_id" {
   description = "ID of CCE flavor"
   #default     = "cce.s1.small"

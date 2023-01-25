@@ -1,0 +1,27 @@
+clouds:
+   otc1:
+     profile: otc
+     region_name: 'eu-de'
+     auth:
+       username: 'username' # Change to your username
+       password: 'password' # Change to your Password
+       project_name: 'eu-de_demo'
+       user_domain_name: OTC00000000001000000447
+       auth_url: 'https://iam.eu-de.otc.t-systems.com:443/v3'
+     interface: 'public'
+     identity_api_version: 3
+     ak: 'UPV8AEWOUVGSBCMVNCLU' #AK/SK values required for access to some services (i.e. OBS)
+     sk: '7Gp6pjT4lHMgIZkcKZGXDqdKs2RePegLOgnbGOD7'
+   otc2:
+     profile: otc
+     region_name: 'eu-nl'
+     auth:
+       username: 'username'
+       password: 'password'
+       project_name: 'eu-nl'
+       domain_name: OTC00000000001000000447
+       auth_url: 'https://iam.eu-nl.otc.t-systems.com:443/v3'
+     interface: 'public'
+     identity_api_version: 3
+     ak: 'UPV8AEWOUVGSBCMVNCLU'
+     sk: '7Gp6pjT4lHMgIZkcKZGXDqdKs2RePegLOgnbGOD7' #AK/SK values required for access to some services (i.e. OBS)

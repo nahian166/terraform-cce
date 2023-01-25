@@ -45,11 +45,11 @@ locals {
 }
 
 
-resource "opentelekomcloud_s3_bucket" "kubeconfig" {
+/* resource "opentelekomcloud_s3_bucket" "kubeconfig" {
     bucket = "kubeconfig-${var.stage_name}"
     acl = "private"
-    region = var.region
+    #region = var.region
     versioning {
       enabled = true
     }
-}
+} */

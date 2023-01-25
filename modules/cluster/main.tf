@@ -20,6 +20,7 @@ resource "opentelekomcloud_vpc_eip_v1" "kubectl_eip" {
     type    = "5_bgp"
     #port_id = opentelekomcloud_lb_loadbalancer_v2.elb.vip_port_id
   }
+  #region = var.region
 }
 resource "opentelekomcloud_cce_cluster_v3" "cluster" {
   name                   = "${var.stage_name}-cluster"
@@ -29,7 +30,6 @@ resource "opentelekomcloud_cce_cluster_v3" "cluster" {
   flavor_id              = var.cluster_flavor_id
   vpc_id                 = var.vpc_id
   subnet_id              = var.subnet_id
-  region                 = var.region
   eip = opentelekomcloud_vpc_eip_v1.kubectl_eip.publicip[0].ip_address
   #kube_proxy_mode        = "ipvs"
   #cluster_version        = var.cluster_version
@@ -49,16 +49,15 @@ resource "opentelekomcloud_cce_node_v3" "nodes" {
     eip_count         = 0
     flavor_id         = var.cluster_node_flavor_id
     key_pair          = var.key_pair_id
-    region            = var.region
 
     root_volume {
         size       = 100
-        volumetype = "SATA"
+        volumetype = "SSD"
     }
 
     data_volumes {
         size       = 100
-        volumetype = "SATA"
+        volumetype = "SSD"
     }
 }
 

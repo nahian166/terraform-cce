@@ -9,12 +9,12 @@ terraform {
         version = ">= 1.2"
     } */
   }
-  backend "s3" {
+  /* backend "s3" {
     key = "tfstate"
     bucket = "nahian-tfstate-bucket"
     region = "eu-de"
     endpoint = "obs.eu-de.otc.t-systems.com"
     skip_region_validation = true
     skip_credentials_validation = true
-  }
+  } */
 }
