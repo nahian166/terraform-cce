@@ -26,7 +26,7 @@ resource "opentelekomcloud_vpc_eip_v1" "ingress_eip" {
 }
 
 output "elb_id" {
-    value =  opentelekomcloud_lb_loadbalancer_v2.elb.id  
+    value =  opentelekomcloud_lb_loadbalancer_v3.elb.id  
 }
 
 output "elb_public_ip" {
