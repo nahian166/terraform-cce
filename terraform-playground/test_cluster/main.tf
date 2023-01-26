@@ -29,16 +29,29 @@ module "cluster" {
     cluster_node_count = local.cluster_node_count
 }
 
-module "loadbalancer" {
-    source = "../../modules/loadbalancer"
+/* module "loadbalancer_v2" {
+    source = "../../modules/loadbalancer_v2"
     stage_name = local.stage_name
     subnet_id = module.vpc.neutron_subnet_id
+} */
+
+/* output "loadbalancerv2_eip" {
+    value = module.loadbalancer_v2.elb_public_ip
+} */
+
+module "loadbalancer_v3" {
+    source = "../../modules/loadbalancer_v3"
+    stage_name = local.stage_name
+    router_id = module.vpc.vpc_id
+    #subnet_id = module.vpc.neutron_subnet_id
     network_ids = module.vpc.network_id
+    availability_zones = local.availability_zone
 }
 
-output "loadbalanver_eip" {
-    value = module.loadbalancer.elb_public_ip
+output "loadbalancerv3_eip" {
+    value = module.loadbalancer_v3.elb_public_ip
 }
+
 
 # Get kubectl_config from a Vault
 /* module "vault_terraform_secrets" {

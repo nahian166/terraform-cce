@@ -18,5 +18,4 @@ provider "opentelekomcloud" {
   #domain_name = local.otc_domain_name
   #token = var.token
   #user_name = "nahian"
-  #password = "Google_Cloud!66"
 }
