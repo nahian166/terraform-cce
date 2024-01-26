@@ -8,4 +8,4 @@ export AWS_ACCESS_KEY_ID=$ACCESS_KEY
 export AWS_SECRET_ACCESS_KEY=$SECRET_KEY
 #export TF_VAR_region="eu-de"
 export TF_LOG="DEBUG"
-export TF_LOG_PATH="/home/ubuntu/terraform-cce/terraform-playground/test_cluster/terraform.log"
+export TF_LOG_PATH="/home/ubuntu/terraform-deploy-destroy/terraform-playground/test_cluster/terraform.log"

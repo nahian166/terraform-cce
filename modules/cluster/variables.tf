@@ -12,9 +12,6 @@ variable "subnet_id" {
   
 }
 
-/* variable "flavor_id" {
-  
-} */
 variable "vpc_id" {
   
 }
@@ -22,10 +19,6 @@ variable "vpc_id" {
 variable "vpc_cidr" {
   
 }
-
-/* variable "nodes" {
-  
-} */
 
 variable "cluster_node_count" {
   
@@ -37,3 +30,13 @@ variable "availability_zone" {
 variable "key_pair_id" {
   
 }
+
+variable "stage_name" {
+  
+}
+
+
+
+# variable "kubeconfig" {
+  
+# }

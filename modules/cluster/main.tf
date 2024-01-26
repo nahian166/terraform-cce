@@ -7,20 +7,19 @@ terraform {
   }
 }
 
-variable "stage_name" {}
 
 resource "opentelekomcloud_vpc_eip_v1" "kubectl_eip" {
   bandwidth {
     charge_mode = "traffic"
-    name        = "${var.stage_name}-kubectl-bandwidth"
+    name        = "${var.stage_name}-kubectl-bw"
     share_type  = "PER"
-    size        = 100
+    size        = 10
   }
   publicip {
     type    = "5_bgp"
-    #port_id = opentelekomcloud_lb_loadbalancer_v2.elb.vip_port_id
+  
   }
-  #region = var.region
+
 }
 resource "opentelekomcloud_cce_cluster_v3" "cluster" {
   name                   = "${var.stage_name}-cluster"
@@ -39,6 +38,19 @@ resource "opentelekomcloud_cce_cluster_v3" "cluster" {
   #container_network_type = var.container_network_type
   
 }
+
+resource "time_sleep" "wait_for_kubernetes" {
+
+    depends_on = [
+        opentelekomcloud_cce_cluster_v3.cluster
+    ]
+
+    create_duration = "30s"
+}
+
+# data "opentelekomcloud_cce_cluster_kubeconfig_v3" "this" {
+#   cluster_id = opentelekomcloud_cce_cluster_v3.cluster.id
+# }
 
 resource "opentelekomcloud_cce_node_v3" "nodes" {
     #for_each = var.nodes
@@ -68,3 +80,21 @@ output "endpoint" {
 output "client-certificate" {
   value = local.client_certificate_data  
 }
+
+
+
+output "id" {
+  value = opentelekomcloud_cce_cluster_v3.cluster.id 
+}
+
+
+data "opentelekomcloud_cce_cluster_kubeconfig_v3" "this" {
+  depends_on = [ opentelekomcloud_cce_cluster_v3.cluster ]
+  cluster_id = opentelekomcloud_cce_cluster_v3.cluster.id
+}
+
+ output kubeconfig {
+   value = data.opentelekomcloud_cce_cluster_kubeconfig_v3.this.kubeconfig
+ }
+
+# resouce "kubectl_manifest" "cert-manager" { depends_on = [] yaml_body = <<YAML apiVersion:.... YAML}

@@ -4,17 +4,14 @@ terraform {
         source = "opentelekomcloud/opentelekomcloud"
         version = "1.32.0"
     }
-/*     external = {
-        source = "hashicorp/external"
-        version = ">= 1.2"
-    } */
+    kubernetes = {
+        source = "hashicorp/kubernetes"
+        version = "2.8.0"     
+    }
+    helm = {
+        source = "hashicorp/helm"
+        version = "2.4.1"
+    }
   }
-  /* backend "s3" {
-    key = "tfstate"
-    bucket = "nahian-tfstate-bucket"
-    region = "eu-de"
-    endpoint = "obs.eu-de.otc.t-systems.com"
-    skip_region_validation = true
-    skip_credentials_validation = true
-  } */
 }
+

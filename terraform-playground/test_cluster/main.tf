@@ -29,6 +29,13 @@ module "cluster" {
     cluster_node_count = local.cluster_node_count
 }
 
+
+
+#resource "helm_release" "deployment" {
+#
+#     depends_on = [ module.cluster ]
+#}
+
 /* module "loadbalancer_v2" {
     source = "../../modules/loadbalancer_v2"
     stage_name = local.stage_name

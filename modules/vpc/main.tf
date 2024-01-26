@@ -10,7 +10,7 @@ terraform {
 resource "opentelekomcloud_vpc_v1" "vpc" {
   name   = var.vpc_name
   cidr   = var.vpc_cidr
-  shared = true
+  # shared = true
 }
 
 resource "opentelekomcloud_vpc_subnet_v1" "subnet" {

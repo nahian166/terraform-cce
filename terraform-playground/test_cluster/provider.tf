@@ -19,3 +19,22 @@ provider "opentelekomcloud" {
   #token = var.token
   #user_name = "nahian"
 }
+
+provider "helm" {
+    kubernetes {
+        host = "${yamldecode(module.cluster.kubeconfig).clusters.1.cluster.server}"
+        client_certificate = "${base64decode(yamldecode(module.cluster.kubeconfig).users.0.user.client-certificate-data)}"
+        client_key = "${base64decode(yamldecode(module.cluster.kubeconfig).users.0.user.client-key-data)}"
+        cluster_ca_certificate ="${base64decode(yamldecode(module.cluster.kubeconfig).clusters.0.cluster.certificate-authority-data)}"
+    }
+}
+
+provider "kubernetes" {
+        host = "${yamldecode(module.cluster.kubeconfig).clusters.1.cluster.server}"
+        client_certificate = "${base64decode(yamldecode(module.cluster.kubeconfig).users.0.user.client-certificate-data)}"
+        client_key = "${base64decode(yamldecode(module.cluster.kubeconfig).users.0.user.client-key-data)}"
+        cluster_ca_certificate ="${base64decode(yamldecode(module.cluster.kubeconfig).clusters.0.cluster.certificate-authority-data)}"
+}
+
+#opentelekomcloud_cce_cluster_v3.cluster.certificate_clusters[0].certificate_authority_data
+
